@@ -20,11 +20,17 @@ def bionic_transform(text):
     transformed = [transform_word(w) if w.strip().isalpha() else w for w in words]
     return "".join(transformed)
 
+from reportlab.lib.styles import ParagraphStyle
+
 def create_bionic_pdf(text, output_path):
     doc = SimpleDocTemplate(output_path, pagesize=A4)
-    styles = getSampleStyleSheet()
-    story = [Paragraph(text, styles["Normal"])]
+    style = ParagraphStyle(name="Bionic", fontName="Helvetica", fontSize=12, leading=16)
+
+    # A szöveg tartalmaz <b>...</b> tageket → XHTML formázás
+    story = [Paragraph(text, style)]
+
     doc.build(story)
+
 
 def bionic_pdf_converter(input_pdf, output_pdf):
     raw_text = extract_text_from_pdf(input_pdf)
