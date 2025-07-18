@@ -41,7 +41,7 @@ def create_bionic_pdf(paragraphs, output_path):
 
     style = ParagraphStyle(
         name="Bionic",
-        fontName="Times-Roman",
+        fontName="Helvecia",
         fontSize=12,
         leading=18,  # másfeles sortávolság
         alignment=TA_LEFT
