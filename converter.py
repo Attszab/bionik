@@ -23,12 +23,23 @@ def bionic_transform(text):
 from reportlab.lib.styles import ParagraphStyle
 
 def create_bionic_pdf(text, output_path):
-    doc = SimpleDocTemplate(output_path, pagesize=A4)
-    style = ParagraphStyle(name="Bionic", fontName="Helvetica", fontSize=12, leading=16)
+    doc = SimpleDocTemplate(output_path, pagesize=A4, leftMargin=20 * mm, rightMargin=20 * mm, topMargin=20 * mm, bottomMargin=20 * mm)
 
-    # A szöveg tartalmaz <b>...</b> tageket → XHTML formázás
-    story = [Paragraph(text, style)]
+    styles = getSampleStyleSheet()
 
+    bionic_style = ParagraphStyle(
+        name='Bionic',
+        parent=styles['Normal'],
+        fontName='Helvetica',
+        fontSize=12,
+        leading=15,
+        alignment=TA_LEFT,
+        allowOrphans=0,
+        allowWidows=0,
+        spaceAfter=5,
+    )
+
+    story = [Paragraph(text, bionic_style)]
     doc.build(story)
 
 
