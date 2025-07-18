@@ -12,6 +12,10 @@ OUTPUT_FOLDER = "outputs"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
+@app.route("/ping")
+def ping():
+    return "pong", 200
+
 @app.route("/convert", methods=["POST"])
 def convert():
     if "pdf" not in request.files:
