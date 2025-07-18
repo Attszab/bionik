@@ -24,7 +24,7 @@ from reportlab.lib.styles import ParagraphStyle
 
 def create_bionic_pdf(text, output_path):
     doc = SimpleDocTemplate(output_path, pagesize=A4)
-    style = ParagraphStyle(name="Bionic", fontName="Helvetica", fontSize=12, leading=16)
+    style = ParagraphStyle(name="Bionic", fontName="Times-Roman", fontSize=12, leading=16)
 
     # A szöveg tartalmaz <b>...</b> tageket → XHTML formázás
     story = [Paragraph(text, style)]
